@@ -1,0 +1,24 @@
+{
+  "name": "aws-cdk-nyan-cat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "cdk deploy",
+    "destroy": "cdk destroy",
+    "synth": "cdk synth",
+    "diff": "cdk diff"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-cdk/aws-ec2": "1.13.1",
+    "@aws-cdk/aws-ecs": "1.13.1",
+    "@aws-cdk/aws-ecs-patterns": "1.13.1",
+    "@aws-cdk/core": "1.13.1"
+  },
+  "devDependencies": {
+    "aws-cdk": "1.13.1"
+  }
+}
