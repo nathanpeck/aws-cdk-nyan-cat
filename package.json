@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "bootstrap": "cdk bootstrap",
     "deploy": "cdk deploy",
     "destroy": "cdk destroy",
     "synth": "cdk synth",

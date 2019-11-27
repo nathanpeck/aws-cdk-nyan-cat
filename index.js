@@ -3,7 +3,7 @@ const ecs = require('@aws-cdk/aws-ecs');
 const ecsPatterns = require('@aws-cdk/aws-ecs-patterns');
 const cdk = require('@aws-cdk/core');
 
-class GreetingStack extends cdk.Stack {
+class NyanStack extends cdk.Stack {
   constructor(parent, id, props) {
     super(parent, id, props);
 
@@ -16,13 +16,13 @@ class GreetingStack extends cdk.Stack {
     const fargateService = new ecsPatterns.ApplicationLoadBalancedFargateService(this, 'nyan-service', {
       cluster,
       taskImageOptions: {
-        image: ecs.ContainerImage.fromRegistry('daviey/nyan-cat-web'),
+        image: ecs.ContainerImage.fromAsset('nyan-cat'),
       },
     });
   }
 }
 
 const app = new cdk.App();
-const nyan = new GreetingStack(app, 'aws-cdk-nyan-cat');
+const nyan = new NyanStack(app, 'aws-cdk-nyan-cat');
 
 app.synth();
