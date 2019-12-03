@@ -1,11 +1,11 @@
-const ec2 = require('@aws-cdk/aws-ec2');
-const ecs = require('@aws-cdk/aws-ecs');
-const ecsPatterns = require('@aws-cdk/aws-ecs-patterns');
-const cdk = require('@aws-cdk/core');
+import ec2 = require('@aws-cdk/aws-ec2');
+import ecs = require('@aws-cdk/aws-ecs');
+import ecsPatterns = require('@aws-cdk/aws-ecs-patterns');
+import cdk = require('@aws-cdk/core');
 
-class NyanStack extends cdk.Stack {
-  constructor(parent, id, props) {
-    super(parent, id, props);
+export class CdkStack extends cdk.Stack {
+  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+    super(scope, id, props);
 
     // Create VPC and Fargate Cluster
     // NOTE: Limit AZs to avoid reaching resource quotas
@@ -16,13 +16,8 @@ class NyanStack extends cdk.Stack {
     const fargateService = new ecsPatterns.ApplicationLoadBalancedFargateService(this, 'nyan-service', {
       cluster,
       taskImageOptions: {
-        image: ecs.ContainerImage.fromAsset('nyan-cat'),
+        image: ecs.ContainerImage.fromAsset('../nyan-cat'),
       },
     });
   }
 }
-
-const app = new cdk.App();
-const nyan = new NyanStack(app, 'aws-cdk-nyan-cat');
-
-app.synth();
